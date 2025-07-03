@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background: #f9fff3fa;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+}
+
+.login-container {
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+  display: flex;
+}
+
+.left-box-container {
+  height: 100%;
+  width: 50%;
+  border-radius: 1rem 0 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-box-image {
+  height: 70%;
+  width: auto;
+}
+
+.right-box-container {
+  height: 100%;
+  width: 50%;
+}
+
+.signup-page {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-right: 70px;
+}
+
+.login-form-container {
+  height: 90%;
+  width: 100%;
+  padding: 40px;
+}
+
+.login-title {
+  font-family: "Baloo 2", sans-serif;
+}
+
+.login-form {
+  height: 80%;
+  width: 100%;
+  padding: 50px 40px;
+}
+
+.input-field input {
+  margin: 25px 0;
+  padding: 10px 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid gray;
+  width: 80%;
+}
+
+.show-and-hide {
+  text-decoration: underline;
+  color: #20db55;
+  cursor: pointer;
+  font-size: 12px;
+  padding-left: 10px;
+}
+
+.form-submit-btn {
+  padding: 12px 10px;
+  font-size: 17px;
+  border-radius: 4px;
+  width: 80%;
+  margin: 20px 0;
+  background: #20db55;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.terms-of-service {
+  font-size: 14px;
+  width: 80%;
+  height: 10%;
+  text-align: justify;
+  color: rgb(72, 72, 72);
+}
