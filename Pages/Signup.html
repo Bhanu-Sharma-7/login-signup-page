@@ -1,52 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Signin - page</title>
-    <link rel="stylesheet" href="../CSS/style.css" />
-  </head>
-  <body>
-    <div class="login-container">
-      <div class="left-box-container">
-        <img src="../Images/login-2.png" alt="" class="left-box-image" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signup - Brudite</title>
+  <link rel="stylesheet" href="../CSS/style.css" />
+</head>
+<body>
+  <div class="login-container">
+    <div class="left-box-container">
+      <img src="../Images/login-2.png" alt="Signup Illustration" class="left-box-image" />
+    </div>
+    <div class="right-box-container">
+      <div class="signup-page">
+        <a href="./Login.html">Login</a>
       </div>
-      <div class="right-box-container">
-        <div class="signup-page">
-          <a href="/Pages/Login.html">Login</a>
+      <div class="login-form-container">
+        <div class="login-title">
+          <h2>Sign up to Brudite</h2>
         </div>
-        <div class="login-form-container">
-          <div class="login-title">
-            <h2>Sign up to Brudite</h2>
-          </div>
-          <div class="login-form">
-            <form class="login-form-tag" action="">
-              <label for="" name="name">Username</label>
-              <div class="username-container input-field">
-                <input type="text" placeholder="example-1" required />
-              </div>
-              <label for="" name="email">Email</label>
-              <div class="email-container input-field">
-                <input type="email" placeholder="example@gmail.com" required />
-              </div>
-              <label for="" name="password">Password</label>
-              <div class="password-container input-field">
-                <input
-                  id="password"
-                  type="password"
-                  placeholder="example#password"
-                  required
-                />
-              </div>
+        <div class="login-form">
+          <form class="login-form-tag">
+            <label for="signup-username">Username</label>
+            <div class="input-field">
+              <input id="signup-username" type="text" placeholder="example-1" required />
+            </div>
 
-              <div class="show-and-hide" id="show-and-hide">Show Password</div>
+            <label for="signup-email">Email</label>
+            <div class="input-field">
+              <input id="signup-email" type="email" placeholder="example@gmail.com" required />
+            </div>
 
-              <button type="submit" class="form-submit-btn">Sign Up</button>
-            </form>
-          </div>
+            <label for="signup-password">Password</label>
+            <div class="input-field">
+              <input class="password-input" type="password" placeholder="example#password" required />
+            </div>
+
+            <div class="show-and-hide">Show Password</div>
+
+            <button type="submit" class="form-submit-btn">Sign Up</button>
+          </form>
         </div>
       </div>
     </div>
-    <script src="../JavaScript/script.js"></script>
-  </body>
+  </div>
+  <script src="../JavaScript/script.js"></script>
+</body>
 </html>
