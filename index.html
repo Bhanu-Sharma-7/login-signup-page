@@ -1,61 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome | Auth App</title>
-  <link rel="stylesheet" href="./styles/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Secure authentication application">
+  <title>AuthFlow | Secure Authentication Portal</title>
+  <link rel="stylesheet" href="./styles/style.css">
   <style>
-    body {
+    :root {
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --background: #0f172a;
+      --card-bg: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #e2e8f0;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0f172a;
-      color: #f8fafc;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background-color: var(--background);
+      color: var(--text-primary);
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
+      line-height: 1.6;
     }
 
     .container {
+      width: 100%;
+      max-width: 420px;
+      padding: 2.5rem;
+      background-color: var(--card-bg);
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
       text-align: center;
-      background-color: #1e293b;
-      padding: 3rem;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      margin: 1rem;
+    }
+
+    .logo {
+      margin-bottom: 1.5rem;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .logo span {
+      color: var(--primary);
     }
 
     h1 {
       margin-bottom: 1.5rem;
-      font-size: 2rem;
-      color: #e2e8f0;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-secondary);
     }
 
-    .button-group a {
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-direction: column;
+    }
+
+    .btn {
       display: inline-block;
       text-decoration: none;
-      margin: 0 1rem;
       padding: 0.75rem 1.5rem;
-      background-color: #3b82f6;
-      color: white;
       border-radius: 8px;
       font-weight: 500;
-      transition: background-color 0.3s ease;
+      transition: var(--transition);
+      text-align: center;
     }
 
-    .button-group a:hover {
-      background-color: #2563eb;
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--text-secondary);
+      border: 1px solid #334155;
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-color: #475569;
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      font-size: 0.875rem;
+      color: #64748b;
+    }
+
+    @media (min-width: 480px) {
+      .button-group {
+        flex-direction: row;
+        justify-content: center;
+      }
+      
+      .btn {
+        flex: 1;
+        max-width: 160px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Welcome to Auth App</h1>
+    <div class="logo">Auth<span>Flow</span></div>
+    <h1>Secure Authentication Portal</h1>
+    <p>Access your account or create a new one to get started with our services.</p>
+    
     <div class="button-group">
-      <a href="./Pages/Login.html">Login</a>
-      <a href="./Pages/Signup.html">Signup</a>
+      <a href="./Pages/Login.html" class="btn btn-primary">Login</a>
+      <a href="./Pages/Signup.html" class="btn btn-secondary">Sign Up</a>
     </div>
+    
+    <footer>
+      &copy; 2023 AuthFlow. All rights reserved.
+    </footer>
   </div>
 </body>
 </html>
