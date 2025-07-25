@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Secure authentication application">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Secure authentication application for seamless and safe login/signup experience." />
+  <meta name="author" content="Bhanu Sharma" />
+  <meta name="theme-color" content="#4f46e5" />
   <title>AuthFlow | Secure Authentication Portal</title>
-  <link rel="stylesheet" href="./styles/style.css">
+  <link rel="stylesheet" href="./styles/style.css" />
+
+  <!-- Embedded Styling -->
   <style>
     :root {
       --primary: #4f46e5;
@@ -14,10 +18,10 @@
       --card-bg: #1e293b;
       --text-primary: #f8fafc;
       --text-secondary: #e2e8f0;
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition: all 0.3s ease-in-out;
     }
 
-    * {
+    *, *::before, *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -31,25 +35,24 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      line-height: 1.6;
+      padding: 1rem;
     }
 
-    .container {
-      width: 100%;
+    main.container {
       max-width: 420px;
-      padding: 2.5rem;
+      width: 100%;
       background-color: var(--card-bg);
+      padding: 2.5rem;
       border-radius: 16px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
       text-align: center;
-      margin: 1rem;
     }
 
     .logo {
-      margin-bottom: 1.5rem;
-      font-size: 1.75rem;
+      font-size: 2rem;
       font-weight: 700;
       color: var(--text-primary);
+      margin-bottom: 1.5rem;
     }
 
     .logo span {
@@ -57,32 +60,36 @@
     }
 
     h1 {
-      margin-bottom: 1.5rem;
       font-size: 1.5rem;
       font-weight: 600;
       color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
     }
 
     .button-group {
       display: flex;
+      flex-direction: column;
       gap: 1rem;
       margin-top: 2rem;
-      flex-direction: column;
     }
 
     .btn {
-      display: inline-block;
-      text-decoration: none;
       padding: 0.75rem 1.5rem;
       border-radius: 8px;
       font-weight: 500;
+      text-decoration: none;
       transition: var(--transition);
       text-align: center;
     }
 
     .btn-primary {
       background-color: var(--primary);
-      color: white;
+      color: #fff;
     }
 
     .btn-primary:hover {
@@ -91,7 +98,7 @@
     }
 
     .btn-secondary {
-      background-color: transparent;
+      background: transparent;
       color: var(--text-secondary);
       border: 1px solid #334155;
     }
@@ -103,8 +110,8 @@
 
     footer {
       margin-top: 2.5rem;
-      font-size: 0.875rem;
-      color: #64748b;
+      font-size: 0.85rem;
+      color: #94a3b8;
     }
 
     @media (min-width: 480px) {
@@ -112,7 +119,7 @@
         flex-direction: row;
         justify-content: center;
       }
-      
+
       .btn {
         flex: 1;
         max-width: 160px;
@@ -120,20 +127,19 @@
     }
   </style>
 </head>
+
 <body>
-  <div class="container">
+  <main class="container" aria-label="Authentication section">
     <div class="logo">Auth<span>Flow</span></div>
     <h1>Secure Authentication Portal</h1>
     <p>Access your account or create a new one to get started with our services.</p>
-    
+
     <div class="button-group">
-      <a href="./Pages/Login.html" class="btn btn-primary">Login</a>
-      <a href="./Pages/Signup.html" class="btn btn-secondary">Sign Up</a>
+      <a href="./Pages/Login.html" class="btn btn-primary" aria-label="Login to your account">Login</a>
+      <a href="./Pages/Signup.html" class="btn btn-secondary" aria-label="Create a new account">Sign Up</a>
     </div>
-    
-    <footer>
-      &copy; 2023 AuthFlow. All rights reserved.
-    </footer>
-  </div>
+
+    <footer>&copy; 2023 AuthFlow. All rights reserved.</footer>
+  </main>
 </body>
 </html>
