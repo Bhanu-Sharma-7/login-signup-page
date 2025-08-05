@@ -5,20 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Secure authentication application for seamless and safe login/signup experience." />
   <meta name="author" content="Bhanu Sharma" />
-  <meta name="theme-color" content="#4f46e5" />
+  <meta name="theme-color" content="#6366f1" />
   <title>AuthFlow | Secure Authentication Portal</title>
-  <link rel="stylesheet" href="./styles/style.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
   <!-- Embedded Styling -->
   <style>
     :root {
-      --primary: #4f46e5;
-      --primary-hover: #4338ca;
-      --background: #0f172a;
-      --card-bg: #1e293b;
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      --card-bg: rgba(30, 41, 59, 0.8);
       --text-primary: #f8fafc;
       --text-secondary: #e2e8f0;
-      --transition: all 0.3s ease-in-out;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --border-radius: 12px;
     }
 
     *, *::before, *::after {
@@ -29,46 +32,69 @@
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background-color: var(--background);
+      background: var(--background);
       color: var(--text-primary);
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       padding: 1rem;
+      line-height: 1.5;
     }
 
     main.container {
-      max-width: 420px;
+      max-width: 440px;
       width: 100%;
-      background-color: var(--card-bg);
-      padding: 2.5rem;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 2.5rem 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
       text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      animation: fadeInUp 0.6s ease-out;
     }
 
     .logo {
-      font-size: 2rem;
+      font-size: 2.5rem;
       font-weight: 700;
       color: var(--text-primary);
       margin-bottom: 1.5rem;
+      display: inline-block;
+      background: linear-gradient(90deg, var(--primary) 0%, #8b5cf6 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      position: relative;
     }
 
-    .logo span {
-      color: var(--primary);
+    .logo::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary) 0%, #8b5cf6 100%);
+      border-radius: 3px;
     }
 
     h1 {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       font-weight: 600;
-      color: var(--text-secondary);
+      color: var(--text-primary);
       margin-bottom: 1rem;
+      line-height: 1.3;
     }
 
     p {
       color: var(--text-secondary);
-      font-size: 0.95rem;
+      font-size: 1rem;
+      opacity: 0.9;
+      max-width: 320px;
+      margin: 0 auto 1.5rem;
     }
 
     .button-group {
@@ -79,42 +105,77 @@
     }
 
     .btn {
-      padding: 0.75rem 1.5rem;
+      padding: 0.85rem 1.5rem;
       border-radius: 8px;
       font-weight: 500;
       text-decoration: none;
       transition: var(--transition);
       text-align: center;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
 
     .btn-primary {
       background-color: var(--primary);
-      color: #fff;
+      color: white;
+      box-shadow: 0 4px 6px rgba(99, 102, 241, 0.3);
     }
 
     .btn-primary:hover {
       background-color: var(--primary-hover);
       transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(79, 70, 229, 0.4);
     }
 
     .btn-secondary {
       background: transparent;
       color: var(--text-secondary);
-      border: 1px solid #334155;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
     }
 
     .btn-secondary:hover {
       background-color: rgba(255, 255, 255, 0.05);
-      border-color: #475569;
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
     }
 
     footer {
       margin-top: 2.5rem;
       font-size: 0.85rem;
       color: #94a3b8;
+      opacity: 0.8;
     }
 
+    /* Decorative elements */
+    .blur-circle {
+      position: fixed;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(99, 102, 241, 0) 70%);
+      z-index: -1;
+    }
+
+    .blur-circle.top-right {
+      top: -50px;
+      right: -50px;
+    }
+
+    .blur-circle.bottom-left {
+      bottom: -50px;
+      left: -50px;
+    }
+
+    /* Responsive adjustments */
     @media (min-width: 480px) {
+      main.container {
+        padding: 3rem 2.5rem;
+      }
+
       .button-group {
         flex-direction: row;
         justify-content: center;
@@ -125,21 +186,50 @@
         max-width: 160px;
       }
     }
+
+    /* Animation keyframes */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
   </style>
 </head>
 
 <body>
-  <main class="container" aria-label="Authentication section">
-    <div class="logo">Auth<span>Flow</span></div>
-    <h1>Secure Authentication Portal</h1>
-    <p>Access your account or create a new one to get started with our services.</p>
+  <!-- Decorative background elements -->
+  <div class="blur-circle top-right"></div>
+  <div class="blur-circle bottom-left"></div>
 
-    <div class="button-group">
-      <a href="./Pages/Login.html" class="btn btn-primary" aria-label="Login to your account">Login</a>
-      <a href="./Pages/Signup.html" class="btn btn-secondary" aria-label="Create a new account">Sign Up</a>
+  <main class="container" aria-label="Authentication section">
+    <div class="logo animate__animated animate__fadeIn">AuthFlow</div>
+    <h1 class="animate__animated animate__fadeIn animate__delay-1s">Secure Authentication Portal</h1>
+    <p class="animate__animated animate__fadeIn animate__delay-1s">Access your account or create a new one to get started with our premium services.</p>
+
+    <div class="button-group animate__animated animate__fadeIn animate__delay-2s">
+      <a href="./Pages/Login.html" class="btn btn-primary" aria-label="Login to your account">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+          <polyline points="10 17 15 12 10 7"></polyline>
+          <line x1="15" y1="12" x2="3" y2="12"></line>
+        </svg>
+        Login
+      </a>
+      <a href="./Pages/Signup.html" class="btn btn-secondary" aria-label="Create a new account">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="8.5" cy="7" r="4"></circle>
+          <line x1="20" y1="8" x2="20" y1="14"></line>
+          <line x1="23" y1="11" x2="17" y1="11"></line>
+        </svg>
+        Sign Up
+      </a>
     </div>
 
-    <footer>&copy; 2023 AuthFlow. All rights reserved.</footer>
+    <footer class="animate__animated animate__fadeIn animate__delay-3s">&copy; 2023 AuthFlow. All rights reserved.</footer>
   </main>
 </body>
 </html>
