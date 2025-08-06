@@ -1,103 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Secure authentication application for seamless and safe login/signup experience." />
-  <meta name="author" content="Bhanu Sharma" />
-  <meta name="theme-color" content="#6366f1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Secure authentication application for seamless and safe login/signup experience.">
+  <meta name="author" content="Bhanu Sharma">
+  <meta name="theme-color" content="#7c3aed">
   <title>AuthFlow | Secure Authentication Portal</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-
-  <!-- Embedded Styling -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  
   <style>
     :root {
-      --primary: #6366f1;
-      --primary-hover: #4f46e5;
-      --background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      --card-bg: rgba(30, 41, 59, 0.8);
-      --text-primary: #f8fafc;
-      --text-secondary: #e2e8f0;
+      --primary: #7c3aed;
+      --primary-light: #8b5cf6;
+      --dark: #111827;
+      --light: #f9fafb;
+      --gray: #6b7280;
+      --card-bg: rgba(255, 255, 255, 0.05);
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      --border-radius: 12px;
     }
 
-    *, *::before, *::after {
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background: var(--background);
-      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      background-color: var(--dark);
+      color: var(--light);
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
       padding: 1rem;
-      line-height: 1.5;
+      position: relative;
+      overflow: hidden;
     }
 
-    main.container {
-      max-width: 440px;
+    /* Background animation */
+    .bg-pattern {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(124, 58, 237, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.1) 0%, transparent 20%);
+      z-index: -1;
+      animation: float 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translate(0, 0);
+      }
+      50% {
+        transform: translate(-10px, -10px);
+      }
+      100% {
+        transform: translate(10px, 10px);
+      }
+    }
+
+    .container {
+      max-width: 420px;
       width: 100%;
       background: var(--card-bg);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      padding: 2.5rem 2rem;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-      text-align: center;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
       border: 1px solid rgba(255, 255, 255, 0.05);
-      animation: fadeInUp 0.6s ease-out;
+      text-align: center;
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .logo {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--text-primary);
+      display: flex;
+      justify-content: center;
       margin-bottom: 1.5rem;
-      display: inline-block;
-      background: linear-gradient(90deg, var(--primary) 0%, #8b5cf6 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      position: relative;
     }
 
-    .logo::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      transform: translateX(-50%);
+    .logo-icon {
       width: 60px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--primary) 0%, #8b5cf6 100%);
-      border-radius: 3px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+      animation: pulse 2s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+      }
+      100% {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+      }
+    }
+
+    .logo-icon svg {
+      width: 30px;
+      height: 30px;
+      color: white;
     }
 
     h1 {
       font-size: 1.75rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 1rem;
-      line-height: 1.3;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
-    p {
-      color: var(--text-secondary);
-      font-size: 1rem;
-      opacity: 0.9;
-      max-width: 320px;
-      margin: 0 auto 1.5rem;
+    .subtitle {
+      color: var(--gray);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+      line-height: 1.5;
     }
 
-    .button-group {
+    .auth-options {
       display: flex;
       flex-direction: column;
       gap: 1rem;
@@ -105,131 +149,110 @@
     }
 
     .btn {
-      padding: 0.85rem 1.5rem;
-      border-radius: 8px;
+      padding: 0.9rem;
+      border-radius: 10px;
       font-weight: 500;
       text-decoration: none;
       transition: var(--transition);
-      text-align: center;
-      font-size: 1rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
+      font-size: 0.95rem;
     }
 
     .btn-primary {
-      background-color: var(--primary);
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
       color: white;
-      box-shadow: 0 4px 6px rgba(99, 102, 241, 0.3);
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
     }
 
     .btn-primary:hover {
-      background-color: var(--primary-hover);
       transform: translateY(-2px);
-      box-shadow: 0 6px 8px rgba(79, 70, 229, 0.4);
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
     }
 
-    .btn-secondary {
+    .btn-outline {
       background: transparent;
-      color: var(--text-secondary);
+      color: var(--light);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: all 0.3s ease;
     }
 
-    .btn-secondary:hover {
-      background-color: rgba(255, 255, 255, 0.05);
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.05);
       border-color: rgba(255, 255, 255, 0.2);
-      transform: translateY(-2px);
+    }
+
+    .btn-icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 1.5rem 0;
+      color: var(--gray);
+      font-size: 0.8rem;
+    }
+
+    .divider::before, .divider::after {
+      content: "";
+      flex: 1;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      margin: 0 10px;
     }
 
     footer {
-      margin-top: 2.5rem;
-      font-size: 0.85rem;
-      color: #94a3b8;
-      opacity: 0.8;
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: var(--gray);
     }
 
-    /* Decorative elements */
-    .blur-circle {
-      position: fixed;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(99, 102, 241, 0) 70%);
-      z-index: -1;
-    }
-
-    .blur-circle.top-right {
-      top: -50px;
-      right: -50px;
-    }
-
-    .blur-circle.bottom-left {
-      bottom: -50px;
-      left: -50px;
-    }
-
-    /* Responsive adjustments */
-    @media (min-width: 480px) {
-      main.container {
-        padding: 3rem 2.5rem;
-      }
-
-      .button-group {
-        flex-direction: row;
-        justify-content: center;
-      }
-
-      .btn {
-        flex: 1;
-        max-width: 160px;
-      }
-    }
-
-    /* Animation keyframes */
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
+    @media (max-width: 480px) {
+      .container {
+        padding: 2rem 1.5rem;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- Decorative background elements -->
-  <div class="blur-circle top-right"></div>
-  <div class="blur-circle bottom-left"></div>
-
-  <main class="container" aria-label="Authentication section">
-    <div class="logo animate__animated animate__fadeIn">AuthFlow</div>
-    <h1 class="animate__animated animate__fadeIn animate__delay-1s">Secure Authentication Portal</h1>
-    <p class="animate__animated animate__fadeIn animate__delay-1s">Access your account or create a new one to get started with our premium services.</p>
-
-    <div class="button-group animate__animated animate__fadeIn animate__delay-2s">
+  <div class="bg-pattern"></div>
+  
+  <main class="container" aria-label="Authentication portal">
+    <div class="logo animate__animated animate__fadeIn">
+      <div class="logo-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+      </div>
+    </div>
+    
+    <h1 class="animate__animated animate__fadeIn animate__delay-1s">Welcome to AuthFlow</h1>
+    <p class="subtitle animate__animated animate__fadeIn animate__delay-1s">Secure authentication for your digital experiences</p>
+    
+    <div class="auth-options animate__animated animate__fadeIn animate__delay-2s">
       <a href="./Pages/Login.html" class="btn btn-primary" aria-label="Login to your account">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
-          <polyline points="10 17 15 12 10 7"></polyline>
-          <line x1="15" y1="12" x2="3" y2="12"></line>
+        <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
         </svg>
-        Login
+        Sign In
       </a>
-      <a href="./Pages/Signup.html" class="btn btn-secondary" aria-label="Create a new account">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-          <circle cx="8.5" cy="7" r="4"></circle>
-          <line x1="20" y1="8" x2="20" y1="14"></line>
-          <line x1="23" y1="11" x2="17" y1="11"></line>
+      
+      <div class="divider">or</div>
+      
+      <a href="./Pages/Signup.html" class="btn btn-outline" aria-label="Create new account">
+        <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
         </svg>
-        Sign Up
+        Create Account
       </a>
     </div>
-
-    <footer class="animate__animated animate__fadeIn animate__delay-3s">&copy; 2023 AuthFlow. All rights reserved.</footer>
+    
+    <footer class="animate__animated animate__fadeIn animate__delay-3s">
+      &copy; 2023 AuthFlow. All rights reserved.
+    </footer>
   </main>
 </body>
 </html>
