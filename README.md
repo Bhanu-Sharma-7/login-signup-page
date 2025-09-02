@@ -69,11 +69,4 @@ Brudite-Auth-UI/
 - Form validation
 - Backend integration with database
 - Show error messages on invalid inputs
-- Responsive design for mobile view
-
-## 📃 License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
+- Responsive design for mobile view
